@@ -1,0 +1,61 @@
+<html>
+<head>
+    <style>
+        div.header {
+            display: block;
+            text-align: center;
+            position: running(header);
+        }
+
+        div.footer {
+            display: block;
+            text-align: center;
+            position: running(footer);
+        }
+
+        @page {
+            @top-center {
+                content: element(header)
+            }
+        }
+
+        @page {
+            @bottom-center {
+                content: element(footer)
+            }
+        }
+
+        .pageNext {
+            page-break-after: always;
+        }
+
+        #pagenumber:before {
+            content: counter(page);
+        }
+
+        #pagecount:before {
+            content: counter(pages);
+        }
+    </style>
+</head>
+<body>
+
+<!--div.header 页眉样式-->
+<!--div.footer 页脚样式-->
+<!--.pageNext 是强制分页操作-->
+
+<div class='header'>Header</div>
+<div>Page1</div>
+<div class="footer">PageFoot <span id="pagenumber"/> / <span id="pagecount"/></div>
+<div class="pageNext"></div>
+
+<div>Page2</div>
+<div class="footer">PageFoot <span id="pagenumber"/> / <span id="pagecount"/></div>
+<div class="pageNext"></div>
+
+<div>Page3</div>
+<!-- header footer 必须放在最开始-->
+<div class="footer">PageFoot <span id="pagenumber"/> / <span id="pagecount"/></div>
+
+</body>
+</html>
